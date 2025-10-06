@@ -2,7 +2,7 @@ name: NFIT Auto Reservation
 
 on:
   schedule:
-    # Ejecuta automáticamente todos los días a las 07:00 UTC (04:00 Chile)
+    # Ejecuta automáticamente todos los días a las 21:03 UTC (18:03 Chile)
     - cron: '3 21 * * *'
   workflow_dispatch:  # Permite ejecutarlo manualmente desde GitHub
 
