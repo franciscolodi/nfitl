@@ -73,31 +73,31 @@ try:
     pedido_option = wait.until(EC.element_to_be_clickable(
         (By.XPATH, '//*[@id="clases"]/div[1]/div/div[2]/button')))
     pedido_option.click()
-    send_telegram("Seleccionando primera clase...")
+    send_telegram("Seleccionando reservas...")
 
     time.sleep(2)
     pedido_option = wait.until(EC.element_to_be_clickable(
         (By.XPATH, '//*[@id="clases"]/div[1]/div[2]/div/div[2]/div/div/div[1]')))
     pedido_option.click()
-    send_telegram("Seleccionando horario...")
+    send_telegram("Seleccionando Crossfit...")
 
     time.sleep(2)
     pedido_option = wait.until(EC.element_to_be_clickable(
         (By.XPATH, '//*[@id="clases"]/div[1]/div[2]/div/div[2]/div/div/div/div[2]')))
     pedido_option.click()
-    send_telegram("Confirmando horario...")
+    send_telegram("Seleccionando dia...")
 
     time.sleep(2)
     pedido_option = wait.until(EC.element_to_be_clickable(
         (By.XPATH, '//*[@id="clases"]/div[1]/div[2]/div/div[2]/div/div/div[5]')))
     pedido_option.click()
-    send_telegram("Seleccionando instructor...")
+    send_telegram("Seleccionando horario...")
 
     time.sleep(2)
     pedido_option = wait.until(EC.element_to_be_clickable(
         (By.XPATH, '//*[@id="clases"]/div[1]/div[2]/div/div[3]/button[1]')))
     pedido_option.click()
-    send_telegram("Reserva completada con éxito. 🎉")
+    send_telegram("Reservando  con éxito. 🎉")
 
 except Exception as e:
     send_telegram(f"❌ Error en NFIT Bot: {e}")
