@@ -61,11 +61,10 @@ try:
     send_telegram("Inicio de sesión realizado correctamente.")
 
     # Navegar a la sección de clases y reservar
-    time.sleep(5)
-    pedido_option = wait.until(EC.element_to_be_clickable(
-        (By.XPATH, '//*[@id="menu"]/nav/ul/a[3]')))
-    pedido_option.click()
-    send_telegram("Entrando a clases...")
+    time.sleep(2)
+    menu_clases = wait.until(EC.presence_of_element_located(
+    (By.XPATH, '//*[@id="menu"]/nav/ul/a[3]')))
+    menu_clases.click()
 
     time.sleep(2)
     pedido_option = wait.until(EC.element_to_be_clickable(
