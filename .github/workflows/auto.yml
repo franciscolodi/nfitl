@@ -1,0 +1,38 @@
+name: NFIT Auto Reserve
+
+on:
+  schedule:
+    - cron: '5 21 * * *'  # Se ejecuta a las 21:05 UTC = 18:05 hora Chile
+  workflow_dispatch:
+
+jobs:
+  run:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install dependencies
+        run: |
+          pip install selenium
+
+      - name: Install Chrome & Chromedriver
+        run: |
+          sudo apt update
+          sudo apt install -y wget unzip xvfb
+          wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
+          sudo apt install -y ./google-chrome-stable_current_amd64.deb
+          CHROME_VERSION=$(google-chrome --version | cut -d " " -f3 | cut -d "." -f1)
+          wget -q https://chromedriver.storage.googleapis.com/${CHROME_VERSION}.0.0/chromedriver_linux64.zip -O /tmp/chromedriver.zip
+          unzip /tmp/chromedriver.zip -d /usr/local/bin/
+
+      - name: Run NFIT Bot
+        env:
+          NFIT_EMAIL: ${{ secrets.NFIT_EMAIL }}
+          NFIT_PASS: ${{ secrets.NFIT_PASS }}
+        run: python bot_nfit.py
