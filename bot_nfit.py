@@ -37,7 +37,7 @@ options.add_argument("start-maximized")
 options.add_experimental_option('useAutomationExtension', False)
 
 driver = webdriver.Chrome(options=options)
-wait = WebDriverWait(driver, 20)
+wait = WebDriverWait(driver, 12)
 
 try:
     send_telegram("🔹 Iniciando bot de reserva NFIT...")
