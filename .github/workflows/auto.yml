@@ -21,6 +21,12 @@ jobs:
         with:
           python-version: '3.10'
 
+      - name: Limpiar entorno pip
+        run: |
+          pip uninstall -y selenium python-telegram-bot python-dotenv || true
+          pip cache purge
+
+
       # 3️⃣ Instalar dependencias Python
       - name: Install dependencies
         run: |
