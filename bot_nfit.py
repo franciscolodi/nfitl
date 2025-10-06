@@ -5,7 +5,7 @@ from dotenv import load_dotenv
 from selenium import webdriver
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
-import selenium.webdriver.support.expected_conditions as EC
+from selenium.webdriver.support import expected_conditions as EC
 from telegram import Bot
 
 # --- Cargar variables desde .env ---
@@ -59,12 +59,12 @@ try:
         (By.XPATH, '/html/body/div/div/div/main/section/form/div[4]/button')))
     pedido_option.click()
     send_telegram("Inicio de sesión realizado correctamente.")
-
-    # Navegar a la sección de clases y reservar
     time.sleep(2)
-    menu_clases = wait.until(EC.EC.element_to_be_clickable(
-        (By.XPATH, '//*[@id="menu"]/nav/ul/a[3]')))
+
+    menu_clases = wait.until(EC.element_to_be_clickable(
+    (By.XPATH, '//*[@id="menu"]/nav/ul/a[3]')))
     menu_clases.click()
+    send_telegram("Ingreso a clases correctamente.")
 
     time.sleep(2)
     pedido_option = wait.until(EC.element_to_be_clickable(
