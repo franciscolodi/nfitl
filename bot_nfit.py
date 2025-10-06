@@ -54,14 +54,14 @@ try:
     send_telegram("Credenciales ingresadas correctamente.")
 
     # Hacer clic en el botón de ingresar
-    time.sleep(5)
+    time.sleep(2)
     pedido_option = wait.until(EC.element_to_be_clickable(
         (By.XPATH, '/html/body/div/div/div/main/section/form/div[4]/button')))
     pedido_option.click()
     send_telegram("Inicio de sesión realizado correctamente.")
 
     # Navegar a la sección de clases y reservar
-    time.sleep(2)
+    time.sleep(5)
     pedido_option = wait.until(EC.element_to_be_clickable(
         (By.XPATH, '//*[@id="menu"]/nav/ul/a[3]')))
     pedido_option.click()
