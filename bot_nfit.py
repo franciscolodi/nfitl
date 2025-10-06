@@ -37,7 +37,7 @@ options.add_argument("start-maximized")
 options.add_experimental_option('useAutomationExtension', False)
 
 driver = webdriver.Chrome(options=options)
-wait = WebDriverWait(driver, 10)
+wait = WebDriverWait(driver, 20)
 
 try:
     send_telegram("🔹 Iniciando bot de reserva NFIT...")
@@ -62,8 +62,8 @@ try:
 
     # Navegar a la sección de clases y reservar
     time.sleep(2)
-    menu_clases = wait.until(EC.presence_of_element_located(
-    (By.XPATH, '//*[@id="menu"]/nav/ul/a[3]')))
+    menu_clases = wait.until(EC.EC.element_to_be_clickable(
+        (By.XPATH, '//*[@id="menu"]/nav/ul/a[3]')))
     menu_clases.click()
 
     time.sleep(2)
