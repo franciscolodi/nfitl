@@ -62,7 +62,7 @@ try:
     time.sleep(2)
 
     menu_clases = wait.until(EC.element_to_be_clickable(
-    (By.XPATH, '//*[@id="menu"]/nav/ul/a[3]')))
+        (By.XPATH, '//*[@id="menu"]/nav/ul/a[3]')))
     menu_clases.click()
     send_telegram("Ingreso a clases correctamente.")
 
