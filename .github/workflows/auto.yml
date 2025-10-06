@@ -4,32 +4,38 @@ on:
   schedule:
     # Todos los días a las 07:00 UTC (04:00 Chile)
     - cron: '1 21 * * *'
-  workflow_dispatch:  # Para ejecutar manualmente desde GitHub
+  workflow_dispatch:  # Permite ejecución manual
 
 jobs:
   run-bot:
     runs-on: ubuntu-latest
 
     steps:
+      # 1️⃣ Clonar el repositorio
       - name: Checkout repository
         uses: actions/checkout@v4
 
+      # 2️⃣ Configurar Python
       - name: Set up Python
         uses: actions/setup-python@v5
         with:
           python-version: '3.10'
 
+      # 3️⃣ Instalar dependencias Python
       - name: Install dependencies
         run: |
           python -m pip install --upgrade pip
           pip install selenium python-dotenv python-telegram-bot==13.15
 
+      # 4️⃣ Instalar Google Chrome (modo headless)
       - name: Install Google Chrome
         run: |
           sudo apt update
           wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
           sudo dpkg -i google-chrome-stable_current_amd64.deb || sudo apt -f install -y
+        continue-on-error: true   # <-- Evita que exit code 8 detenga el workflow
 
+      # 5️⃣ Ejecutar NFIT bot
       - name: Run NFIT bot
         env:
           NFIT_EMAIL: ${{ secrets.NFIT_EMAIL }}
