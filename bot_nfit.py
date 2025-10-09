@@ -1,5 +1,6 @@
 import os
 import time
+import datetime
 import traceback
 from dotenv import load_dotenv
 from selenium import webdriver
@@ -82,16 +83,47 @@ try:
     send_telegram("Seleccionando Crossfit...")
 
     time.sleep(2)
-    pedido_option = wait.until(EC.element_to_be_clickable(
-        (By.XPATH, '//*[@id="clases"]/div[1]/div[2]/div/div[2]/div/div/div/div[2]')))
-    pedido_option.click()
-    send_telegram("Seleccionando dia...")
 
+    ##
+
+    # Obtener el día actual (en inglés en minúsculas)
+    dia_semana = datetime.datetime.today().strftime('%A').lower()
+    
+    # Mapear días a sus XPATH
+    xpath_dias = {
+        'sunday':   '//*[@id="clases"]/div[1]/div[2]/div/div[2]/div/div/div/div[1]',  # Domingo
+        'monday':   '//*[@id="clases"]/div[1]/div[2]/div/div[2]/div/div/div/div[2]',  # Lunes
+        'tuesday':  '//*[@id="clases"]/div[1]/div[2]/div/div[2]/div/div/div/div[3]',  # Martes
+        'wednesday':'//*[@id="clases"]/div[1]/div[2]/div/div[2]/div/div/div/div[4]',  # Miércoles
+        'thursday': '//*[@id="clases"]/div[1]/div[2]/div/div[2]/div/div/div/div[5]',  # Jueves
+        'friday': '//*[@id="clases"]/div[1]/div[2]/div/div[2]/div/div/div/div[6]',  # Viernes
+        
+    }
+    
+    # Seleccionar día
+    if dia_semana in xpath_dias:
+        send_telegram(f"Seleccionando día: {dia_semana.capitalize()}...")
+        pedido_option = wait.until(EC.element_to_be_clickable((By.XPATH, xpath_dias[dia_semana])))
+        pedido_option.click()
+    else:
+        send_telegram(f"No hay opción configurada para {dia_semana}.")
+        raise Exception(f"Día no configurado: {dia_semana}")
+    
+    # Esperar un poco antes del horario
     time.sleep(2)
-    pedido_option = wait.until(EC.element_to_be_clickable(
-        (By.XPATH, '//*[@id="clases"]/div[1]/div[2]/div/div[2]/div/div/div[5]')))
-    pedido_option.click()
+    
+ 
+    # Seleccionar horario
+    if dia_semana.lower() == 'thursday':
+        xpath_horario = '//*[@id="clases"]/div[1]/div[2]/div/div[2]/div/div/div[4]'
+    elif dia_semana.lower() == 'friday':
+        xpath_horario = '//*[@id="clases"]/div[1]/div[2]/div/div[2]/div/div/div[2]'
+    else:
+        xpath_horario = '//*[@id="clases"]/div[1]/div[2]/div/div[2]/div/div/div[5]'
     send_telegram("Seleccionando horario...")
+    pedido_option = wait.until(EC.element_to_be_clickable((By.XPATH, xpath_horario)))
+    pedido_option.click()
+
 
     time.sleep(2)
     pedido_option = wait.until(EC.element_to_be_clickable(
