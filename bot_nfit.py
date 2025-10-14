@@ -58,25 +58,25 @@ try:
     send_telegram("Credenciales ingresadas correctamente.")
 
     # Hacer clic en el botón de ingresar
-    time.sleep(2)
+    time.sleep(5)
     pedido_option = wait.until(EC.element_to_be_clickable(
         (By.XPATH, '/html/body/div/div/div/main/section/form/div[4]/button')))
     pedido_option.click()
     send_telegram("Inicio de sesión realizado correctamente.")
-    time.sleep(30)
+    time.sleep(10)
 
     menu_clases = wait.until(EC.element_to_be_clickable(
         (By.XPATH, '//*[@id="menu"]/nav/ul/a[3]')))
     menu_clases.click()
     send_telegram("Ingreso a clases correctamente.")
 
-    time.sleep(30)
+    time.sleep(10)
     pedido_option = wait.until(EC.element_to_be_clickable(
         (By.XPATH, '//*[@id="clases"]/div[1]/div/div[2]/button')))
     pedido_option.click()
     send_telegram("Seleccionando reservas...")
 
-    time.sleep(15)
+    time.sleep(10)
     pedido_option = wait.until(EC.element_to_be_clickable(
         (By.XPATH, '//*[@id="clases"]/div[1]/div[2]/div/div[2]/div/div/div[1]')))
     pedido_option.click()
@@ -110,7 +110,7 @@ try:
         raise Exception(f"Día no configurado: {dia_semana}")
     
     # Esperar un poco antes del horario
-    time.sleep(2)
+    time.sleep(10)
     
  
     # Seleccionar horario
@@ -125,7 +125,7 @@ try:
     pedido_option.click()
 
 
-    time.sleep(2)
+    time.sleep(10)
     pedido_option = wait.until(EC.element_to_be_clickable(
         (By.XPATH, '//*[@id="clases"]/div[1]/div[2]/div/div[3]/button[1]')))
     pedido_option.click()
