@@ -63,26 +63,26 @@ try:
         (By.XPATH, '/html/body/div/div/div/main/section/form/div[4]/button')))
     pedido_option.click()
     send_telegram("Inicio de sesión realizado correctamente.")
-    time.sleep(4)
+    time.sleep(30)
 
     menu_clases = wait.until(EC.element_to_be_clickable(
         (By.XPATH, '//*[@id="menu"]/nav/ul/a[3]')))
     menu_clases.click()
     send_telegram("Ingreso a clases correctamente.")
 
-    time.sleep(2)
+    time.sleep(30)
     pedido_option = wait.until(EC.element_to_be_clickable(
         (By.XPATH, '//*[@id="clases"]/div[1]/div/div[2]/button')))
     pedido_option.click()
     send_telegram("Seleccionando reservas...")
 
-    time.sleep(2)
+    time.sleep(15)
     pedido_option = wait.until(EC.element_to_be_clickable(
         (By.XPATH, '//*[@id="clases"]/div[1]/div[2]/div/div[2]/div/div/div[1]')))
     pedido_option.click()
     send_telegram("Seleccionando Crossfit...")
 
-    time.sleep(2)
+    time.sleep(15)
 
     ##
 
