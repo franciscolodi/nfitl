@@ -114,7 +114,7 @@ try:
     
  
     # Seleccionar horario
-    if dia_semana.lower() == 'thursday':
+    if dia_semana.lower() in ('monday', 'wednesday', 'thursday'):
         xpath_horario = '//*[@id="clases"]/div[1]/div[2]/div/div[2]/div/div/div[4]'
     elif dia_semana.lower() == 'friday':
         xpath_horario = '//*[@id="clases"]/div[1]/div[2]/div/div[2]/div/div/div[2]'
