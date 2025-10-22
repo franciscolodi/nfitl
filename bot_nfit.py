@@ -114,12 +114,14 @@ try:
     
  
     # Seleccionar horario
-    if dia_semana.lower() in ('monday', 'wednesday', 'thursday'):
+    if dia_semana.lower() in ('monday', 'wednesday'):
+        xpath_horario = '//*[@id="clases"]/div[1]/div[2]/div/div[2]/div/div/div[5]'
+    elif dia_semana.lower() == 'thursday':
         xpath_horario = '//*[@id="clases"]/div[1]/div[2]/div/div[2]/div/div/div[4]'
     elif dia_semana.lower() == 'friday':
         xpath_horario = '//*[@id="clases"]/div[1]/div[2]/div/div[2]/div/div/div[2]'
     else:
-        xpath_horario = '//*[@id="clases"]/div[1]/div[2]/div/div[2]/div/div/div[5]'
+        xpath_horario = '//*[@id="clases"]/div[1]/div[2]/div/div[2]/div/div/div[6]'
     send_telegram("Seleccionando horario...")
     pedido_option = wait.until(EC.element_to_be_clickable((By.XPATH, xpath_horario)))
     pedido_option.click()
