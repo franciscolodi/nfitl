@@ -21,7 +21,7 @@ jobs:
           echo "Hora actual UTC:"
           date -u
 
-          TARGET_HOUR=21
+          TARGET_HOUR=20
           TARGET_MIN=1
 
           NOW_EPOCH=$(date +%s)
