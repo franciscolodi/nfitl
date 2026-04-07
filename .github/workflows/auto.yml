@@ -3,7 +3,7 @@ name: NFIT Auto Reservation
 on:
   schedule:
     # Dispara antes de las 18:00 Chile (~17:39)
-    - cron: '39 20 * * 0-5'
+    - cron: '39 19 * * 0-5'
   workflow_dispatch:
 
 jobs:
