@@ -3,7 +3,7 @@ name: NFIT Auto Reservation
 on:
   schedule:
     # Dispara antes de las 18:00 Chile (~17:39)
-    - cron: '39 19 * * 0-5'
+    - cron: '39 21 * * 0-5'
   workflow_dispatch:
 
 jobs:
@@ -21,7 +21,7 @@ jobs:
           echo "Hora actual UTC:"
           date -u
 
-          TARGET_HOUR=20
+          TARGET_HOUR=22
           TARGET_MIN=1
 
           NOW_EPOCH=$(date +%s)
