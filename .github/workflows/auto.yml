@@ -16,7 +16,7 @@ jobs:
         uses: actions/checkout@v4
 
       # 2️⃣ Esperar hasta las 18:01 Chile (21:01 UTC)
-      - name: Esperar hasta las 18:01 Chile
+      - name: Esperar hasta las 17:59 Chile
         run: |
           echo "Hora actual UTC:"
           date -u
